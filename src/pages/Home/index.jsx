@@ -1,14 +1,37 @@
-import { Container } from "./styles";
+import { Container, Dishes } from "./styles";
 
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import { Food } from "../../components/Food";
+
+import spaguettiGambe from "../../assets/spaguetti-gambe.png";
 
 export function Home() {
-    return (
-        <Container>
-            <Header />
+  return (
+    <Container>
+      <Header />
+      <Dishes>
+        <Food
+          isChecked
+          data={{
+            src: spaguettiGambe,
+            title: "Spaguetti Gambe",
+            description: "Massa fresca com camarões e pesto.",
+            price: "79,97",
+          }}
+        />
 
-            <Footer />
-        </Container>
-    );
+        <Food
+          isAdmin
+          data={{
+            src: spaguettiGambe,
+            title: "Spaguetti Gambe",
+            description: "Massa fresca com camarões e pesto.",
+            price: "79,97",
+          }}
+        />
+      </Dishes>
+      <Footer />
+    </Container>
+  );
 }
