@@ -1,5 +1,5 @@
 import { BiPencil } from "react-icons/bi";
-import { FiHeartx, FiMinus, FiPlus } from "react-icons/fi";
+import { FiHeart, FiMinus, FiPlus } from "react-icons/fi";
 import { RxCaretRight } from "react-icons/rx";
 
 import theme from "../../styles/theme";

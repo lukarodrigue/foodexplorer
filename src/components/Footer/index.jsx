@@ -14,7 +14,7 @@ export function Footer() {
 
             <Copyright>
 
-                © 2023 - Todos os direitos reservados.
+                © 2025 - Todos os direitos reservados.
 
             </Copyright>
 
