@@ -1,18 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 210px;
+  max-width: 21rem;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 
   border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_200};
-  border-radius: 8px;
-  padding: 24px;
-
+  border-radius: 0.8rem;
+  padding: 2.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-
+  gap: 1.2rem;
   position: relative;
 
   svg {
@@ -23,33 +21,33 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.GRAY_200};
 
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 1.6rem;
+     right: 1.6rem;
   }
 
   > img {
-    max-width: 88px;
-    margin-top: ${({ isAdmin }) => isAdmin ? "46px" : "none"};
+    max-width: 8.8rem;
+    margin-top: ${({ isAdmin }) => isAdmin ? "4.6rem" : "none"};
   }
 
   > span {
      line-height: 100%;
      color: ${({ theme }) => theme.COLORS.LIGHT_BLUE};
-     margin-bottom: ${({ isAdmin }) => isAdmin ? "46px" : "none"};
+     margin-bottom: ${({ isAdmin }) => isAdmin ? "4.6rem" : "none"};  
   }
 
   @media (min-width: 1024px) {
-     max-width: 304px;
+    max-width: 30.4rem;
  
-     gap: 15px;
+    gap: 1.5rem;
  
      > svg {
-       right: 18px;
+      right: 1.8rem;
      }
  
      > img {
-       max-width: 176px;
-       margin-top: ${({ isAdmin }) => isAdmin ? "31.5px" : "none"};
+      max-width: 17.6rem;
+      margin-top: ${({ isAdmin }) => isAdmin ? "3.2rem" : "none"};
      }
      
      > p {
@@ -75,14 +73,14 @@ export const Title = styled.div`
   > h2 {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
   }
   
     @media (min-width: 1024px) {
      > h2 {
        font-weight: 700;
-       font-size: 24px;
+       font-size: 2.4rem;
        line-height: 140%;
      }
   }

@@ -46,7 +46,7 @@ export function New({ isNew, isAdmin }) {
                         <Section title="Imagem do prato">
                             <Image className="image">
                                 <label htmlFor="image">
-                                    <FiUpload size={24} />
+                                    <FiUpload size={"2.4rem"} />
                                     <span>Selecione imagem</span>
 
                                     <input
@@ -73,7 +73,7 @@ export function New({ isNew, isAdmin }) {
                                         <option value="beverage">Bebida</option>
                                     </select>
 
-                                    <RiArrowDownSLine size={24} />
+                                    <RiArrowDownSLine size={"2.4rem"} />
                                 </label>
                             </Category>
                         </Section>
