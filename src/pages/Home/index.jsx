@@ -34,22 +34,20 @@ export function Home({ isAdmin }) {
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.5 // the value in percentage indicates at what visibility the callback should be called
+      threshold: 0.5
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // If the element is visible, start the Swiper autoplay if the ref is not null
+
           entry.target.swiper && entry.target.swiper.autoplay.start();
         } else {
-          // If the element is not visible, stop the Swiper autoplay if the ref is not null
           entry.target.swiper && entry.target.swiper.autoplay.stop();
         }
       });
     }, options);
 
-    // Observe the visibility changes of elements containing Swiper
     observer.observe(swiperElRef1.current);
     observer.observe(swiperElRef2.current);
     observer.observe(swiperElRef3.current);
@@ -94,7 +92,6 @@ export function Home({ isAdmin }) {
                 slides-per-view="auto"
                 navigation={isDesktop ? "true" : "false"}
                 loop="true"
-                autoplay="true"
                 grab-cursor="true"
               >
                 <swiper-slide>
@@ -139,7 +136,6 @@ export function Home({ isAdmin }) {
                 slides-per-view="auto"
                 navigation={isDesktop ? "true" : "false"}
                 loop="true"
-                autoplay="true"
                 grab-cursor="true"
               >
                 <swiper-slide>
@@ -184,7 +180,6 @@ export function Home({ isAdmin }) {
                 slides-per-view="auto"
                 navigation={isDesktop ? "true" : "false"}
                 loop="true"
-                autoplay="true"
                 grab-cursor="true"
               >
                 <swiper-slide>

@@ -7,8 +7,10 @@ export const Container = styled.header`
    padding: 5.6rem 2.8rem 2.4rem;
    display: flex;
    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_300};
+   
    button:last-child {
     width: auto;
+    padding: 0;
     background: none; 
   }
 
