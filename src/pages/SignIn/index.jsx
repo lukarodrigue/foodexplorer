@@ -23,7 +23,6 @@ export function SignIn() {
 
   return (
     <Container>
-      <Button title="Entrar" />
       <Brand>
         <img src={brand} alt="Logo" />
       </Brand>
@@ -32,17 +31,27 @@ export function SignIn() {
         <h2>Faça seu login</h2>
 
         <Section title="Email">
-          <Input placeholder="Exemplo: exemplo@exemplo.com.br" type="text" onChange={e => setEmail(e.target.value)} />
+          <Input
+            placeholder="Exemplo: exemplo@exemplo.com.br"
+            type="text"
+            onChange={e => setEmail(e.target.value)}
+          />
         </Section>
 
         <Section title="Senha">
-          <Input placeholder="No mínimo 6 caracteres" type="password" onChange={e => setPassword(e.target.value)} />
+          <Input
+            placeholder="No mínimo 6 caracteres"
+            type="password"
+            onChange={e => setPassword(e.target.value)}
+          />
         </Section>
 
         <Button title="Entrar" onClick={handleSignIn} />
 
-        <Link to="/register">Criar uma conta</Link>
+        <Link to="/register">
+          Criar uma conta
+        </Link>
       </Form>
     </Container>
   );
-}
+};
