@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
- 
- export default createGlobalStyle`
+
+export default createGlobalStyle`
    * {
      margin: 0;
      padding: 0;
@@ -8,10 +8,10 @@ import { createGlobalStyle } from "styled-components";
    }
  
    :root {
-     font-size: 62.5%;
+    font-size: 62.5%;
  
-     --swiper-navigation-size: 4rem;
-     --swiper-theme-color: ${({ theme }) => theme.COLORS.WHITE};
+    --swiper-navigation-size: 4rem;
+    --swiper-theme-color: ${({ theme }) => theme.COLORS.WHITE};
    }
  
    body {
