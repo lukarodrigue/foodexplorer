@@ -12,10 +12,11 @@ export const Container = styled.div`
    
    > main {
      width: 100%;
+     
      grid-area: content;
-     justify-content: center;
+     justify-self: center;
    }
-   
+ 
    .tags {
      display: flex;
      flex-wrap: wrap;
@@ -42,18 +43,27 @@ export const Container = styled.div`
      }
    }
  
-   .save {
-     > button {
-      padding: 1.2rem 2.4rem;
-       max-width: 172px;
+   .buttons {
+     display: flex;
+     flex-direction: row;
+     gap: 3.2rem;
  
+     > button {
+       padding: 1.2rem 2.4rem;
+     }
+ 
+     .delete {
+       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
+     }
+ 
+     .save {
        &:disabled {
          opacity: 1;
          background-color: ${({ theme }) => theme.COLORS.LIGHT_RED};
        }
      }
    }
-
+   
    @media (min-width: 1024px) {
      height: 100vh;
      grid-template-rows: 9.6rem auto 7.7rem;
@@ -62,7 +72,7 @@ export const Container = styled.div`
        overflow-y: auto;
  
        ::-webkit-scrollbar {
-        width: 0.8rem;
+         width: 0.8rem;
        }
  
        ::-webkit-scrollbar-thumb {
@@ -71,15 +81,18 @@ export const Container = styled.div`
        }
      }
  
-     .save {
+     .buttons {
        justify-content: flex-end;
  
-       >button{
-        max-width: 17.2rem;
+       .delete {
+         max-width: 13.5rem;
+       }
+ 
+       .save {
+         max-width: 17.2rem;
        }
      }
    }
-   
  `;
 
 export const Form = styled.form`
@@ -95,21 +108,21 @@ export const Form = styled.form`
      flex-direction: column;
  
      h1 {
-    margin-top: 2.4rem;
+       margin-top: 2.4rem;
  
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    line-height: 140%;
+       font-family: "Poppins", sans-serif;
+       font-weight: 500;
+       line-height: 140%;
  
-    color: ${({ theme }) => theme.COLORS.GRAY_200};
+       color: ${({ theme }) => theme.COLORS.GRAY_200};
      }
    }
  
    > div {
-    display: flex;
-    flex-direction: column;
-    gap: 2.4rem;
-   }
+     display: flex;
+     flex-direction: column;
+     gap: 2.4rem;
+ 
      section {
        width: 100%;
      }
@@ -118,10 +131,11 @@ export const Form = styled.form`
        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
        border-radius: 0.8rem;
      }
+   }
  
    @media (min-width: 1024px) {
      gap: 3.2rem;
-
+ 
      width: calc(100% - 24.8rem);
      margin: 4rem 12.4rem 11.6rem;
  
@@ -131,24 +145,22 @@ export const Form = styled.form`
  
        :first-of-type {
          section:nth-of-type(1) {
-          max-width: 22.9rem;
+           max-width: 22.9rem;
          }
  
          section:nth-of-type(3) {
-          max-width: 36.4rem;
+           max-width: 36.4rem;
          }
        }
-
+ 
        :nth-of-type(2) {
          section:nth-of-type(2) {
-          max-width: 83.7rem;
+           max-width: 25.1rem;
          }
        }
      }
    }
-`;
-
-
+ `;
 
 export const Image = styled.div`
    padding: 1.2rem 3.2rem;
@@ -166,7 +178,7 @@ export const Image = styled.div`
      display: flex;
      gap: 0.8rem;
      cursor: pointer;
-
+ 
      span {
        font-family: "Poppins", sans-serif;
        font-size: 1.4rem;
@@ -177,7 +189,7 @@ export const Image = styled.div`
        position: absolute;
        right: 0;
        z-index: -1;
-       
+ 
        width: 100%;
      }
  
@@ -191,14 +203,12 @@ export const Image = styled.div`
        }
      }
    }
-
-
+ 
    @media (min-width: 1024px) {
      input {
-      max-width: 22.9rem;
+       max-width: 22.9rem;
      }
    }
-
  `;
 
 export const Category = styled.div`
@@ -226,7 +236,7 @@ export const Category = styled.div`
  
        position: absolute;
        top: 0;
-       right: 16px;
+       right: 1.6rem;
  
        cursor: pointer;
        pointer-events: none;
