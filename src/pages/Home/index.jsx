@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useMediaQuery } from "react-responsive";
 import { Container, Content } from "./styles";
+
+import { api } from '../../services/api';
 
 import { Menu } from "../../components/Menu";
 import { Header } from '../../components/Header';
@@ -8,12 +10,9 @@ import { Section } from '../../components/Section';
 import { Food } from "../../components/Food";
 import { Footer } from '../../components/Footer';
 
-import { useRef, useEffect } from 'react';
 import { register } from 'swiper/element/bundle';
 
 register();
-
-import spaguettiGambe from "../../assets/spaguetti-gambe.png";
 
 export function Home({ isAdmin }) {
   const swiperElRef1 = useRef(null);
@@ -22,13 +21,6 @@ export function Home({ isAdmin }) {
 
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const spaghettiData = {
-    src: spaguettiGambe,
-    title: "Spaguetti Gambe",
-    description: "Massa fresca com camarões e pesto.",
-    price: "79,97",
-  };
 
   useEffect(() => {
     const options = {
@@ -57,13 +49,38 @@ export function Home({ isAdmin }) {
     }
   }, []);
 
+  const [dishes, setDishes] = useState({ meals: [], desserts: [], beverages: [] });
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    async function fetchDishes() {
+      const response = await api.get(`/dishes?search=${search}`);
+      const meals = response.data.filter(dish => dish.category === "meal");
+      const desserts = response.data.filter(dish => dish.category === "dessert");
+      const beverages = response.data.filter(dish => dish.category === "beverage");
+
+      setDishes({ meals, desserts, beverages });
+    }
+
+    fetchDishes();
+  }, [search]);
+
   return (
     <Container>
-      {!isDesktop &&
-        <Menu isAdmin={isAdmin} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      {!isDesktop && <Menu
+        isAdmin={isAdmin}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        setSearch={setSearch}
+      />
       }
 
-      <Header isAdmin={isAdmin} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <Header
+        isAdmin={isAdmin}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        setSearch={setSearch}
+      />
 
       <main>
         <div>
@@ -84,7 +101,6 @@ export function Home({ isAdmin }) {
 
           <Content>
             <Section title="Refeições">
-              <div className="swiper-background"></div>
               <swiper-container
                 key={isDesktop}
                 ref={swiperElRef1}
@@ -94,37 +110,17 @@ export function Home({ isAdmin }) {
                 loop="true"
                 grab-cursor="true"
               >
-                <swiper-slide>
-                  <Food isChecked isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
+                {
+                  dishes.meals.map(dish => (
+                    <swiper-slide key={String(dish.id)}>
+                      <Food
+                        isChecked
+                        isAdmin={isAdmin}
+                        data={dish}
+                      />
+                    </swiper-slide>
+                  ))
+                }
               </swiper-container>
             </Section>
 
@@ -138,37 +134,17 @@ export function Home({ isAdmin }) {
                 loop="true"
                 grab-cursor="true"
               >
-                <swiper-slide>
-                  <Food isChecked isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
+                {
+                  dishes.desserts.map(dish => (
+                    <swiper-slide key={String(dish.id)}>
+                      <Food
+                        isChecked
+                        isAdmin={isAdmin}
+                        data={dish}
+                      />
+                    </swiper-slide>
+                  ))
+                }
               </swiper-container>
             </Section>
 
@@ -182,37 +158,17 @@ export function Home({ isAdmin }) {
                 loop="true"
                 grab-cursor="true"
               >
-                <swiper-slide>
-                  <Food isChecked isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
-
-                <swiper-slide>
-                  <Food isAdmin={isAdmin} data={spaghettiData} />
-                </swiper-slide>
+                {
+                  dishes.beverages.map(dish => (
+                    <swiper-slide key={String(dish.id)}>
+                      <Food
+                        isChecked
+                        isAdmin={isAdmin}
+                        data={dish}
+                      />
+                    </swiper-slide>
+                  ))
+                }
               </swiper-container>
             </Section>
           </Content>
