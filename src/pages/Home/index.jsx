@@ -71,6 +71,40 @@ export function Home({ isAdmin }) {
     fetchDishes();
   }, [search]);
 
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        const response = await api.get("/favorites");
+        const favorites = response.data.map((favorite) => favorite.dish_id);
+
+        setFavorites(favorites);
+      } catch (error) {
+        console.log("Erro ao buscar favoritos:", error);
+      }
+    };
+
+    fetchFavorites();
+  }, []);
+
+  const updateFavorite = async (isFavorite, dishId) => {
+    try {
+      if (isFavorite) {
+        await api.delete(`/favorites/${dishId}`);
+
+        setFavorites((prevFavorites) =>
+          prevFavorites.filter((favorite) => favorite !== dishId)
+        );
+      } else {
+        await api.post('/favorites', { dish_id: dishId });
+        setFavorites((prevFavorites) => [...prevFavorites, dishId]);
+      }
+    } catch (error) {
+      console.log('Erro ao atualizar favoritos:', error);
+    }
+  };
+
   return (
     <Container>
       {!isDesktop && <Menu
@@ -120,10 +154,11 @@ export function Home({ isAdmin }) {
                   dishes.meals.map(dish => (
                     <swiper-slide key={String(dish.id)}>
                       <Food
-                        isChecked
                         isAdmin={isAdmin}
                         data={dish}
-                        onClick={() => handleDetails(dish.id)}
+                        isFavorite={favorites.includes(dish.id)}
+                        updateFavorite={updateFavorite}
+                        handleDetails={handleDetails}
                       />
                     </swiper-slide>
                   ))
@@ -145,10 +180,11 @@ export function Home({ isAdmin }) {
                   dishes.desserts.map(dish => (
                     <swiper-slide key={String(dish.id)}>
                       <Food
-                        isChecked
                         isAdmin={isAdmin}
                         data={dish}
-                        onClick={() => handleDetails(dish.id)}
+                        isFavorite={favorites.includes(dish.id)}
+                        updateFavorite={updateFavorite}
+                        handleDetails={handleDetails}
                       />
                     </swiper-slide>
                   ))
@@ -170,10 +206,11 @@ export function Home({ isAdmin }) {
                   dishes.beverages.map(dish => (
                     <swiper-slide key={String(dish.id)}>
                       <Food
-                        isChecked
                         isAdmin={isAdmin}
                         data={dish}
-                        onClick={() => handleDetails(dish.id)}
+                        isFavorite={favorites.includes(dish.id)}
+                        updateFavorite={updateFavorite}
+                        handleDetails={handleDetails}
                       />
                     </swiper-slide>
                   ))
