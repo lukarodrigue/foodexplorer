@@ -171,6 +171,10 @@ export const Image = styled.div`
        font-family: "Poppins", sans-serif;
        font-size: 1.4rem;
        line-height: 2.4rem;
+
+       white-space: nowrap;
+       overflow: hidden;
+       text-overflow: ellipsis;
      }
  
      input {
@@ -194,7 +198,11 @@ export const Image = styled.div`
 
 
    @media (min-width: 1024px) {
-     input {
+    span {
+       max-width: 13.3rem;
+     } 
+    
+    input {
       max-width: 22.9rem;
      }
    }

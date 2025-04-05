@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 21rem;
+  height: 29.2rem;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 
   border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_200};
@@ -28,6 +29,7 @@ export const Container = styled.div`
   > img {
     max-width: 8.8rem;
     margin-top: ${({ isAdmin }) => isAdmin ? "4.6rem" : "none"};
+    cursor: pointer;
   }
 
   > span {
@@ -38,7 +40,7 @@ export const Container = styled.div`
 
   @media (min-width: 1024px) {
     max-width: 30.4rem;
- 
+    height: 46.2rem;
     gap: 1.5rem;
  
      > svg {
@@ -54,6 +56,7 @@ export const Container = styled.div`
        font-size: 14px;
        line-height: 160%;
        color: ${({ theme }) => theme.COLORS.GRAY_100};
+       overflow: hidden;
      }
  
      > span {
@@ -69,12 +72,19 @@ export const Title = styled.div`
   display: flex;
   color: ${({ theme }) => theme.COLORS.GRAY_200};
   align-items: center;
+  width: 100%;
 
   > h2 {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-size: 1.4rem;
     line-height: 2.4rem;
+
+    width: 100%;
+     
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
     @media (min-width: 1024px) {
