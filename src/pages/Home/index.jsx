@@ -14,7 +14,7 @@ import { register } from 'swiper/element/bundle';
 
 register();
 
-export function Home({ isAdmin }) {
+export function Home({ isAdmin, user_id }) {
   const swiperElRef1 = useRef(null);
   const swiperElRef2 = useRef(null);
   const swiperElRef3 = useRef(null);
@@ -158,6 +158,7 @@ export function Home({ isAdmin }) {
                         data={dish}
                         isFavorite={favorites.includes(dish.id)}
                         updateFavorite={updateFavorite}
+                        user_id={user_id}
                         handleDetails={handleDetails}
                       />
                     </swiper-slide>
@@ -184,6 +185,7 @@ export function Home({ isAdmin }) {
                         data={dish}
                         isFavorite={favorites.includes(dish.id)}
                         updateFavorite={updateFavorite}
+                        user_id={user_id}
                         handleDetails={handleDetails}
                       />
                     </swiper-slide>
@@ -210,6 +212,7 @@ export function Home({ isAdmin }) {
                         data={dish}
                         isFavorite={favorites.includes(dish.id)}
                         updateFavorite={updateFavorite}
+                        user_id={user_id}
                         handleDetails={handleDetails}
                       />
                     </swiper-slide>
