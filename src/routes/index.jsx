@@ -8,7 +8,7 @@ export function Routes() {
   const { user, isUserAuthenticated } = useAuth();
   const isAdmin = user ? user.is_admin : false;
 
-  //const userAuthenticated = isUserAuthenticated();
+  const userAuthenticated = isUserAuthenticated();
   return (
     <BrowserRouter>
       {(user && userAuthenticated) ? <AppRoutes isAdmin={isAdmin} /> : <AuthRoutes />}
