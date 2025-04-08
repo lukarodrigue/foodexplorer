@@ -186,6 +186,7 @@ export const Image = styled.div`
        white-space: nowrap;
        overflow: hidden;
        text-overflow: ellipsis;
+       max-width: calc(100vw - 16rem);
      }
  
      input {
@@ -208,11 +209,14 @@ export const Image = styled.div`
    }
  
    @media (min-width: 1024px) {
-    span {
-       max-width: 13.3rem;
-     } 
-    input {
-       max-width: 22.9rem;
+    > label {
+       span {
+         max-width: 13.3rem;
+       }
+       
+       input {
+         max-width: 22.9rem;
+       }
      }
    }
  `;

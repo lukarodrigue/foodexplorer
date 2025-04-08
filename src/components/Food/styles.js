@@ -57,6 +57,7 @@ export const Container = styled.div`
        line-height: 160%;
        color: ${({ theme }) => theme.COLORS.GRAY_100};
        overflow: hidden;
+       text-align: center;
      }
  
      > span {
@@ -85,6 +86,7 @@ export const Title = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
   }
   
     @media (min-width: 1024px) {

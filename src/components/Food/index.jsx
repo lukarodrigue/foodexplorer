@@ -35,7 +35,7 @@ export function Food({ data, isAdmin, isFavorite, updateFavorite, handleDetails,
   };
 
   function handleEdit() {
-    navigate(`/edit/${params.id}`);
+    navigate(`/edit/${data.id}`);
   }
 
   async function handleInclude() {
@@ -96,8 +96,7 @@ export function Food({ data, isAdmin, isFavorite, updateFavorite, handleDetails,
       </Title>
 
       {isDesktop && <p>{data.description}</p>}
-      <span>R$ {data.price}</span>
-
+      <span>R$ {data.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
       {!isAdmin && (
         <Order>
           <NumberPicker number={number} setNumber={setNumber} />
